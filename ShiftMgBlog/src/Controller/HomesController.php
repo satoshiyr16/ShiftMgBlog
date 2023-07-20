@@ -26,11 +26,11 @@ class HomesController extends AppController{
         $shift->created = new FrozenTime();
 
         if ($this->Shifts->save($shift)) {
-            // 保存に成功した場合の処理
+
             $this->Flash->success(__('成功'));
             return $this->redirect(['action' => 'index']);
         } else {
-            // 保存に失敗した場合の処理
+
             $this->Flash->error(__('失敗パオーン'));
         }
     }
