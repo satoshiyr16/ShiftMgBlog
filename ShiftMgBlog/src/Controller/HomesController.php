@@ -23,7 +23,6 @@ class HomesController extends AppController{
         // 新しい記事の作成
         $shift = $this->Shifts->patchEntity($shift, $shiftData);
 
-        // 作成日時を設定
         $shift->created = new FrozenTime();
 
         if ($this->Shifts->save($shift)) {
