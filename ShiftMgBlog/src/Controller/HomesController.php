@@ -19,25 +19,31 @@ class HomesController extends AppController{
 
     if ($this->request->is('post')) {
         $shiftData = $this->request->getData();
-
-        // 新しい記事の作成
         $shift = $this->Shifts->patchEntity($shift, $shiftData);
 
+        $companies = $this->request->getData('company');
+        $shift->company = $companies;
         $workedHours = $this->request->getData('worked_hours');
+        $shift->time = intval($workedHours);
         $hourlyWages = $this->request->getData('hourly_wage');
+        $shift->hourly_wage = intval($hourlyWages);
         $restHours = $this->request->getData('rest_hours');
+        $shift->rest = intval($restHours);
+
+        $totalMoney = ($workedHours - $restHours) * $hourlyWages;
+
+        $shift->total_money = intval($totalMoney);
 
         $shift->created = new FrozenTime();
-
-        $total = ($workedHours - $restHours) * $hourlyWages;
 
         if ($this->Shifts->save($shift)) {
 
             $this->Flash->success(__('成功'));
             return $this->redirect(['action' => 'index']);
         } else {
-
-            $this->Flash->error(__('失敗パオーン'));
+          $errors = $shift->getErrors();
+          debug($errors);
+            $this->Flash->error(__('失敗'));
         }
     }
 

@@ -24,13 +24,13 @@ class CreateShifts extends AbstractMigration
                 'limit' => 100,
                 'null' => false
             ])
-            ->addColumn('subtle','integer',[
+            ->addColumn('hourly_wage','integer',[
                 'limit' => 50,
                 'null' => false
             ])
             ->addColumn('money','integer',[
-                'limit' => 50,
-                'null' => true
+                'null' => true,
+                'default' => null
             ])
             ->addColumn('rest','integer',[
                 'limit' => 150,

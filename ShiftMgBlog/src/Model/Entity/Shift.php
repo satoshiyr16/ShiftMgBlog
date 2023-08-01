@@ -11,8 +11,8 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $company
  * @property int $time
- * @property int $subtle
- * @property int|null $money
+ * @property int $hourly_wage
+ * @property int|null $total_money
  * @property int|null $rest
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -31,8 +31,8 @@ class Shift extends Entity
     protected $_accessible = [
         'company' => true,
         'time' => true,
-        'subtle' => true,
-        'money' => true,
+        'hourly_wage' => true,
+        'total_money' => true,
         'rest' => true,
         'created' => true,
         'modified' => true,

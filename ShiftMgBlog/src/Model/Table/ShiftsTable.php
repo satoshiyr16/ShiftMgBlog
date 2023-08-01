@@ -66,13 +66,13 @@ class ShiftsTable extends Table
             ->notEmptyString('time');
 
         $validator
-            ->integer('subtle')
-            ->requirePresence('subtle', 'create')
-            ->notEmptyString('subtle');
+            ->integer('hourly_wage')
+            ->requirePresence('hourly_wage', 'create')
+            ->notEmptyString('hourly_wage');
 
         $validator
-            ->integer('money')
-            ->allowEmptyString('money');
+            ->integer('total_money')
+            ->allowEmptyString('total_money');
 
         $validator
             ->integer('rest')
