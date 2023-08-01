@@ -23,7 +23,13 @@ class HomesController extends AppController{
         // 新しい記事の作成
         $shift = $this->Shifts->patchEntity($shift, $shiftData);
 
+        $workedHours = $this->request->getData('worked_hours');
+        $hourlyWages = $this->request->getData('hourly_wage');
+        $restHours = $this->request->getData('rest_hours');
+
         $shift->created = new FrozenTime();
+
+        $total = ($workedHours - $restHours) * $hourlyWages;
 
         if ($this->Shifts->save($shift)) {
 
